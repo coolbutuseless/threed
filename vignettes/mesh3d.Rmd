@@ -1,0 +1,106 @@
+---
+title: "threed + mesh3d objects"
+author: "mikefc"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+mesh3d adaptations
+------------------------------------------------------------------------------
+
+The `threed` package adapts/extends the `mesh3d` format to include the following:
+
+* Meshes now support `primitivetype` of `point` and `line` 
+  (in addtion to the standard `triangle` and `quad`)
+* Meshes with line segments will contain `il`. This is a `2 x n` matrix giving
+  the indices of the vertex of each end of the line segment.
+* Meshes with point data will contain `ip`.  This is a `1 x n` matrix giving
+  the index of the vertex of the point.
+* A general `properties` data.frame can be included in the object. The number of
+  rows in this data.frame must equal the total number of elements in the object.
+* A `transform_matrix` is a 4x4 transformation matrix. If missing or NULL, then it
+  is treated as the identity matrix.
+  
+
+
+
+Transforming `mesh3d` objects
+------------------------------------------------------------------------------
+
+* The supported object transformations are:
+    * `scale_by(obj, c(x, y, z))`
+    * `translate_by(obj, c(x, y, z))`
+    * `rotate_by(obj, angle, c(x, y, z))`
+    * `perspective_projection(obj, w, h, n, f)
+* When applying a transform to an object, the object vertices are not immediately transformed.
+* Instead, a `mesh3d` object now includes an extra `transform_matrix` element which
+  keeps track of the transforms applied to this object.
+* To actually update the vertex positions, call `actualize_transformation` on the object.
+
+```{r eval=FALSE}
+# A 2x2x2 cube centred at the origin
+threed::mesh3dobj$cube 
+
+# Transforming the cube only updates the `transform_matrix` of the object
+threed::mesh3dobj$cube %>%
+  threed::translate_by(c(x=0, y=1, z=1))
+
+# Actualizing the transformation updates the vertices
+threed::mesh3dobj$cube %>%
+  threed::translate_by(c(x=0, y=1, z=1)) %>%
+  actualize_transformation()
+```
+
+
+
+
+`as.data.frame.mesh3d`
+------------------------------------------------------------------------------
+
+The `as.data.frame.mesh3d` function will convert a `mesh3d` object into a
+very verbose data.frame.
+
+This function first calls `threed::actualize_transformation()` to apply any 
+outstanding transformations to the vertices.
+
+The resulting data.frame can then be used to plot the 3d points, lines and polygons 
+in `ggplot2`.  It has the following columns by default:
+
+* `element_id` - element index
+* `element_type` - an integer from 1 to 4 indicating whether the element is a point, line, triangle or quad
+* `vorder` - vertex ordering within element
+* `x,y,z` - coorindates of vertex
+* `vertex` - global index of this vertex
+* `vnx,vny,vnz` - unit vector in direction of vertex normal
+* `fnx,fny,fnz` - unit vector in direction of face normal
+* `fcx,fcy,fcz` - coordinates of centroid of element
+* `zorder` - zorder is used to control ggplot draw order. For polygons it is based upon fcz. For lines it is the smaller of the z coordinates. For points, it is the z coordinate of the point
+* `zorder_var` - The value used to determine zorder
+* `hidden` - by assuming the camera faces along the negative z-axis, any triangle or quad face which has a face normal which also points along the negative z-axis faces away from the camera and is hidden. Boolean value.
+
+
+```{r}
+obj <- threed::mesh3dobj$cube
+
+as.data.frame(obj)
+```
+
+
+
+
+
+
+
+

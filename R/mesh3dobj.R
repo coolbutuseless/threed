@@ -1,0 +1,23 @@
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#' List of sample mesh3d objects
+#'
+#' Objects are transformed and scaled to fit in a 2x2x2 box centred at the origin
+#'
+#' \itemize{
+#' \item{\code{cube}} - {6 quads. From \code{rgl}}
+#' \item{\code{tetrahedron}} - {4 triangles. From \code{rgl}}
+#' \item{\code{octahedron}} - {8 triangles. From \code{rgl}}
+#' \item{\code{icosahedron}} - {20 triangles. From \code{rgl}}
+#' \item{\code{dodecahedron}} - {36 triangles. From \code{rgl}}
+#' \item{\code{cuboctahedron}} - {8 triangles. 6 quads. From \code{rgl}}
+#' \item{\code{sphere}} - {646 triangles}
+#' \item{\code{bird}} - {80 triangles. 2760 quads}
+#' \item{\code{bunny}} - {Simplified Stanford Bunny. 4968 triangles - \url{https://graphics.stanford.edu/data/3Dscanrep/},
+#'                       \url{https://en.wikipedia.org/wiki/Stanford_Bunny}}
+#' \item{\code{cow}} - {Cow. 5804 triangles}
+#' \item{\code{teapot}} - {Utah Teapot. 6320 triangles - \url{https://en.wikipedia.org/wiki/Utah_teapot}}
+#' }
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"mesh3dobj"
