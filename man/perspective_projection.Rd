@@ -18,5 +18,5 @@ perspective_projection(x, w = 2, h = 2, n = 1, f = 10)
 \item{f}{width, height, near, far boundaries}
 }
 \description{
-The camera is at the origin looking along the negative-z axis.
+Perform perspective projection
 }
