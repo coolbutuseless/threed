@@ -174,12 +174,18 @@ as.data.frame.mesh3d <- function(x, ...) {
 
 
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-  # add in any properties
+  # add in any properties by element_id
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   if (!is.null(obj$properties)) {
     cols_to_add <- setdiff(colnames(obj$properties), colnames(obj_df))
+
+    if (!'element_id' %in% names(obj$properties)) {
+      obj$properties$element_id <- seq(nrow(obj$properties))
+    }
+    cols_to_add <- c('element_id', cols_to_add)
+
     if (length(cols_to_add) > 0L) {
-      obj_df <- cbind(obj_df, obj$properties[,cols_to_add, drop=FALSE])
+      obj_df <- merge(obj_df, obj$properties[,cols_to_add, drop=FALSE], all.x = TRUE)
     }
   }
 

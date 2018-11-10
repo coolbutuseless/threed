@@ -37,7 +37,6 @@ add_normals.mesh3d <- function(x, ...) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   element_types <- get_element_types(x)
   if (length(intersect(element_types, 3:4)) == 0L) {
-    message("Can't add normals if there are no triangles or quads")
     return(x)
   }
 
