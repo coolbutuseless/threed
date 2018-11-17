@@ -10,7 +10,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
-  R (>= 2.10.0)
+    R (>= 2.10.0)
 RoxygenNote: 6.1.0
 Suggests: testthat,
     knitr,
