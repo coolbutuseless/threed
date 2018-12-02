@@ -16,7 +16,8 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
-    dplyr,
     ggplot2,
     covr
 VignetteBuilder: knitr
+Imports: 
+    magrittr

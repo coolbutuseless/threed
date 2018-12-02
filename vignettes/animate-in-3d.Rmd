@@ -11,7 +11,6 @@ vignette: >
 
 ```{r setup, include = FALSE}
 suppressPackageStartupMessages({
-  library(dplyr)
   library(ggplot2)
   library(threed)
 })
@@ -82,8 +81,8 @@ plot_rotated_obj <- function(obj, world_to_camera, xangle = 0, yangle = xangle +
   # mimic a light source above and to the right of the object
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   obj_df <- as.data.frame(obj_rot) %>% 
-    filter(!hidden) %>%
-    mutate(shade = (fny + fnx) / 2)
+    subset(!hidden) %>%
+    transform(shade = (fny + fnx) / 2)
   
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # ggplot of the object
