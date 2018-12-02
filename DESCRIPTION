@@ -4,18 +4,20 @@ Title: Three-Dimensional Object Transformations
 Version: 0.1.1
 Author: mikefc
 Maintainer: mikefc <mikefc@coolbutuseless.com>
-Description: Tools for transforming/projecting 3d objects and converting to/from data.frame 
-    representation.
+Description: Tools for transforming/projecting 3d objects and converting to and
+  from data.frame representation.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 2.10.0)
 RoxygenNote: 6.1.0
-Suggests: testthat,
+Suggests: 
+    testthat,
     knitr,
     rmarkdown,
     dplyr,
     ggplot2,
-    gifski
+    gifski,
+    covr
 VignetteBuilder: knitr

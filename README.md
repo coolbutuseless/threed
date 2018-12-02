@@ -1,8 +1,15 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # threed - 3d object transformation library<img src="figures/logo-with-pause.gif" align="right"/>
 
-![](https://img.shields.io/badge/lifecycle-alpha-orange.svg)
+![](https://img.shields.io/badge/lifecycle-alpha-orange.svg) [![Travis
+build
+status](https://travis-ci.org/coolbutuseless/threed.svg?branch=master)](https://travis-ci.org/coolbutuseless/threed)
+[![Coverage
+status](https://codecov.io/gh/coolbutuseless/threed/branch/master/graph/badge.svg)](https://codecov.io/github/coolbutuseless/threed?branch=master)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/coolbutuseless/threed?branch=master&svg=true)](https://ci.appveyor.com/project/coolbutuseless/threed)
 
 `threed` is a small, dependency-free R library for doing 3d object
 transformations i.e. translation, scaling, rotation and perspective
@@ -70,7 +77,7 @@ Besides the standard `x,y,z` coordinates, the data.frame also includes:
   - centroid of each face = `fcx, fcy, fcz`
   - `vertex` global vertex identifier from the `mesh3d` object
   - `zorder` the drawing order of the elements from back to front
-  - `hidden` whether or not the face is hidden. i.e. `fnz
+  - `hidden` whether or not the face is hidden. i.e. `fnz
 < 0`
 
 <!-- end list -->
