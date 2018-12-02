@@ -11,13 +11,12 @@ Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 2.10.0)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Suggests: 
     testthat,
     knitr,
     rmarkdown,
     dplyr,
     ggplot2,
-    gifski,
     covr
 VignetteBuilder: knitr
