@@ -6,7 +6,6 @@
 \alias{transform_by.matrix}
 \alias{transform_by.mesh3d}
 \alias{transform_by.numeric}
-\alias{transform_by.data.frame}
 \alias{transform_by.mesh3dlist}
 \alias{transform_by_inverse}
 \title{Transform the vertex coordinates by the transformation matrix}
@@ -20,8 +19,6 @@ transform_by(x, transform_matrix)
 \method{transform_by}{mesh3d}(x, transform_matrix)
 
 \method{transform_by}{numeric}(x, transform_matrix)
-
-\method{transform_by}{data.frame}(x, transform_matrix)
 
 \method{transform_by}{mesh3dlist}(x, transform_matrix)
 

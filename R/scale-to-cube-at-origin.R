@@ -28,7 +28,7 @@ scale_to_cube_at_origin.mesh3d <- function(x, size = 2) {
   vmin <- apply(x$vb, 1, min)[1:3]
   vmax <- apply(x$vb, 1, max)[1:3]
 
-  if (!all(is.finite(vmin) || !all(is.finite(vmax)))) {
+  if (!all(is.finite(vmin)) || !all(is.finite(vmax))) {
     stop("Non-finite vertex extents. Is this object only 1D or 2D? Must be 3D!")
   }
 

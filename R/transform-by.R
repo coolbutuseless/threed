@@ -87,33 +87,6 @@ transform_by.numeric <- function(x, transform_matrix) {
 #' @rdname transform_by
 #' @export
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-transform_by.data.frame <- function(x, transform_matrix) {
-  stop("transform_by.data.frame: not doing this directly anymore. Maybe replace with conversion to mesh3d object, then transform then conversion back to data.frame?")
-  if (all(c('x', 'y', 'z', 'w') %in% colnames(x))) {
-    cols <- c('x', 'y', 'z', 'w')
-    mat <- as.matrix(x[, cols])
-  } else if (all(c('x', 'y', 'z') %in% colnames(x))) {
-    cols <- c('x', 'y', 'z')
-    mat <- as.matrix(x[, cols])
-    mat <- cbind(mat, 1)
-  } else {
-    stop("data.frame must have columns 'x', 'y' and 'z' (and optionally 'w')")
-  }
-
-  res <- transform_by.matrix(mat, transform_matrix)
-  for (i in seq_along(cols)) {
-    x[[cols[i]]] <- res[,i]
-  }
-
-  x
-}
-
-
-
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#' @rdname transform_by
-#' @export
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 transform_by.mesh3dlist <- function(x, transform_matrix) {
   l <- lapply(x, transform_by, transform_matrix = transform_matrix)
   class(l) <- 'mesh3dlist'

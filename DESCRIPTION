@@ -1,7 +1,7 @@
 Package: threed
 Type: Package
 Title: Three-Dimensional Object Transformations
-Version: 0.1.1
+Version: 0.1.2
 Author: mikefc
 Maintainer: mikefc <mikefc@coolbutuseless.com>
 Description: Tools for transforming/projecting 3d objects and converting to and
@@ -17,7 +17,6 @@ Suggests:
     knitr,
     rmarkdown,
     ggplot2,
-    covr
-VignetteBuilder: knitr
-Imports: 
+    covr,
     magrittr
+VignetteBuilder: knitr
